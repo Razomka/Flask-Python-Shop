@@ -1,0 +1,50 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+<form action ="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.cardnumber.label }}
+    {{ form.cardnumber() }}
+    {% for error in form.cardnumber.errors %}
+    {{ error }}
+{% endfor %}
+<br/>
+    {{ form.datenumber.label }}
+    {{ form.datenumber() }}
+    {% for error in form.datenumber.errors %}
+    {{ error }}
+    {% endfor %}
+<br/>
+    {{ form.securitynum.label }}
+    {{ form.securitynum() }}
+    {% for error in form.securitynum.errors %}
+    {{ error }}
+    {% endfor %}
+    <br/>
+    {{ form.shipaddress.label }}
+    {{ form.shipaddress() }}
+    {% for error in form.shipaddress.errors %}
+    {{ error }}
+    {% endfor %}
+<br/>
+    {{ form.cardaddress.label }}
+    {{ form.cardaddress() }}
+    {% for error in form.cardaddress.errors %}
+    {{ error }}
+    {% endfor %}   
+<br/>
+    {{ form.addtodata.label}}
+    {{ form.addtodata()}}
+    {{ form.Submit() }}
+</form>
+<p> We will deduct your bank account by: €{{total}}</p>
+
+{% if success != "" %}
+    {% if addtodata == True %}
+        <p>Success! Thank you for your purchase! It will be send to {{shipaddress}}</p>
+        <p>{{success}}</p>
+    {% else %}
+        <p>Success! Thank you for your purchase! It will be send to {{shipaddress}}</p>
+{% endif %}
+{% endif %}
+{% endblock %}

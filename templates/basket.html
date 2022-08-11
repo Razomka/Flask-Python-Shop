@@ -1,0 +1,26 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+
+{% if empty %}
+    <p>Your basket is empty. Please spend all your hard-earned cash on my delicious bakery goods.</p>
+    <p><a href="{{url_for('shop')}}"> And to spend it, would be here!</a></p>
+{% endif %}
+<section class="Gallery">
+{% for item in shop %}
+    {% for id in basket %}
+        {% if id == item["id"] %}
+        <figure>
+            <img src = "{{url_for('static', filename=item['imagename'])}}" alt = "Alt text" title = "{{item['title']}}"/>
+            <figcaption>{{items[item["id"]]}} Number in Basket: {{basket[id]}} Price: € {{item["price"]}}</figcaption>
+            <a href="{{url_for('remove_from_basket',id=id)}}">Remove one of this item from your basket</a>
+        </figure>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</section>
+{% if not empty %}
+<p>Total Price: € {{total}} </p>
+<p><a href="{{url_for('checkout')}}">Go to the checkout</a></p>
+{% endif %}
+{% endblock %}

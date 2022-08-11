@@ -1,0 +1,22 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+
+{% if empty %}
+    <p>Your wish list is empty, I guess we must be fully stocked! Or if you didn't know, add items to your wish list to recieve email notifications!</p>
+{% endif %}
+<section class="Gallery">
+{% for item in shop %}
+    {% for id in wishlist %}
+        {% if id == item["id"] %}
+        <figure>
+            <img src = "{{url_for('static', filename=item['imagename'])}}" alt = "Alt text" title = "{{item['title']}}"/>
+            <figcaption>{{items[item["id"]]}} Price: € {{item["price"]}}</figcaption>
+            <a href="{{url_for('remove_from_wishlist',id=id)}}">Remove this item from your wish list</a>
+        </figure>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</section>
+
+{% endblock %}

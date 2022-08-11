@@ -1,0 +1,314 @@
+:root{
+    --colour-bgcolour:#f7f0e9 ;
+    --header-colour: rgb(90, 150, 120);
+    --text-colour: black;
+    --root-background-color:#e0d8cc;
+    --banner-background-color:rgb(46, 70, 58);
+    background-color:var(--root-background-color);
+    font-size: 20px;
+    font-family: Montserrat, Pacifico-Regular Arial, Franklin Gothic Medium, Arial, sans-serif;
+}
+
+/* This is selecting most of the webpage, mainly for layout */
+html{
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:'top'
+                        'middle'
+                        'bottom';
+    color: black;
+    width: 100%;
+    margin: 0;
+}
+
+.Gallery{
+    display: grid;
+    grid-template-columns: 5fr;
+    grid-template-areas: 'top top top top top'
+                         'middle middle middle middle middle';
+    gap: 10px;
+
+}
+
+
+/* This section is selecting the various larger parts of my webpage*/
+
+h3{
+    text-align: center;
+}
+
+h1, h2, h3, h4{
+    font-family: Pacifico-Regular;
+}
+
+main > section, main > article{
+    border:2px solid var(--colour-bgcolour);
+    border-radius: 2rem;
+    margin: 1rem;
+}
+
+header {
+    background-color: var(--colour-bgcolour);
+    background-size: cover;
+    border: 1px solid var(--colour-bgcolour);
+    border-radius: 2rem;
+    grid-area:top;
+    margin-bottom: 0.5rem;
+}
+
+nav {
+    grid-area: top;
+    margin-bottom: 1rem;
+}
+
+main{
+    grid-area:middle;
+    background-color: var(--colour-bgcolour);
+    border: 1px solid --colour-bgcolour;
+    border-radius: 2rem;
+}
+
+main p, main h3, main h4{
+    padding: 0.75rem;
+}
+
+footer{
+    background-color: var(--colour-bgcolour);
+    border-radius: 2rem;
+    border: 1px solid var(--colour-bgcolour) ;
+    padding: .75rem;
+    grid-area: bottom;
+    margin-top: 0.5rem;
+}
+
+/* This is the detail selectors, specific components like tables or images etc*/
+
+a:link{
+    color: rgb(73, 154, 247);
+}
+
+a:visited{
+    color: rgb(196, 71, 179);
+}
+
+a:hover{
+    color: forestgreen;
+}
+
+a:active{
+    color: crimson;
+}
+
+td a{
+    display: block;
+}
+
+figure{
+    text-align: center;
+}
+
+figcaption{
+    max-width: 100%;
+
+}
+
+h3{
+    text-decoration: underline;
+    font-style: italic;
+}
+
+a{
+    text-decoration: none;
+}
+
+ol, ul{
+    padding-inline-start: 3rem;
+}
+
+li{
+    margin-bottom: 1rem;
+}
+
+img{
+    max-width: 100%;
+}
+
+video{
+    max-width: 100%;
+}
+
+p + video{
+    max-width: 80%;
+    float: right;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    shape-outside: url("../videos/JamesGoring.mp4");
+}
+
+table {
+    width: 100%;
+    border: 1px solid --colour-bgcolour;
+    padding: 1rem;
+    text-align: left;
+}
+
+/* Header & Nav Selection */
+
+h1 video{
+    display: inline;
+    max-width: 70%;
+    margin-left: 1rem;
+}
+
+header h1{
+    text-align: center;
+    background-color: var(--header-colour);
+    border-top: 1px solid var(--colour-bgcolour)(18, 180, 72);
+    border-bottom: 1px solid var(--colour-bgcolour)(18, 180, 72);
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: 0;
+    margin-bottom: auto;
+    padding: 0.5rem;
+}
+
+header img{
+    text-align: center;
+    max-width: 100%;
+}
+
+a img{    
+    width: 80%;
+    padding: .5rem;
+}
+
+header h1 + p, nav p{
+    text-align: center;
+}
+
+header h1 + p{
+    font-style: italic;
+}
+
+nav ul ~ p{
+    background-color:var(--banner-background-color) ;
+    width: 50%;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+ul ~ p a{
+    padding: .25rem;
+    display: block;
+}
+
+nav ul{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+li a{
+    display: block;
+    color: rgb(29, 23, 13);
+    text-decoration: none;
+}
+
+nav li{
+    display: block;
+    border: 1px solid -var(--banner-background-color);
+    border-radius: 1rem;
+    text-align: center;
+    margin: .5rem;
+    width: 100%;
+    background-color: var(--banner-background-color);
+    padding: 0.25rem;
+}
+
+/* Specific selectors for the text within the main */
+
+strong{
+    color: rgb(255, 0, 0);
+}
+
+ol li a{
+    display: inline;
+}
+
+#recipe h3{
+    border: 1px solid black;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: var(--header-colour);
+
+}
+
+main h2{
+    border: 1px solid black;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: var(--header-colour);
+    padding: .5rem;
+}
+
+/* Footer Selectors */
+
+footer img{
+    max-width: 20%;
+    float:right;
+    margin-left:auto
+}
+
+figure a{
+    display: block;
+    
+}
+
+
+/* This is for responsive web design and other queries */
+
+@media (hover: hover){
+
+    a:link{
+        color: rgb(56, 56, 255);
+    }
+
+    a:visited{
+        color: rgb(196, 71, 179);
+    }
+
+    a:hover{
+        color: forestgreen;
+    }
+
+    a:active{
+        color: crimson;
+    }
+    
+    ol li:hover, p + ul li:hover{
+        background-color:rgb(250, 209, 133);
+    }
+
+    tr + tr:hover{
+        background-color: rgb(250, 209, 133);
+    }
+
+}

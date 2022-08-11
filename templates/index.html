@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content%}
+{% if length == 33 %}
+<h1>
+    {{success}}
+</h1>
+<p>
+    {{success2}}
+</p>
+{% endif %}
+<p>
+    <a href="{{url_for('shop')}}"> Browse the shop </a>
+</p>
+
+<p>
+    <a href="{{url_for('basket')}}">Go to your basket</a>
+</p>
+
+<p>
+    <a href="{{ url_for('wishlist')}}">Your wish list</a>
+</p>
+
+{% if length == 73 or length == 51 %}
+<p>
+    {{success}}
+</p>
+{% endif %}
+
+{% endblock %}

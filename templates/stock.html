@@ -1,0 +1,79 @@
+{% extends "base_mod.html" %}
+
+{% block main_content %}
+
+<table>
+    <caption> Table of Current Stock</caption>
+    <tr>
+        <th>Item ID</th>
+        <th>Item name</th>
+        <th>Avaiable stock</th>
+        <th>Name of image and file type</th>
+        <th>Price</th>
+        <th>Description</th>
+    </tr>
+    {% for items in stock_items %}
+    <tr>
+        <td>
+            {{items["id"]}}
+        </td>
+        <td>
+            {{items["item"]}}
+        </td>
+        <td>
+            {{items["stock"]}}
+        </td>
+        <td>
+            {{items["imagename"]}}
+        </td>
+        <td>
+            {{items["price"]}}
+        </td>
+        <td>
+            {{items["title"]}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br/>
+<form action ="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+        {{ form.itemremoval.label }}
+        {{ form.itemremoval() }}
+    <br/>
+        {{ form.newstock.label }}
+        {{ form.newstock() }}
+    <br/>
+        {{ form.stockID.label }}
+        {{ form.stockID() }}
+    <br/>
+        {{ form.stockname.label }}
+        {{ form.stockname() }}
+    <br/>
+        {{ form.stocklevel.label }}
+        {{ form.stocklevel() }}
+    <br/>
+        {{ form.imagename.label }}
+        {{ form.imagename() }}
+    <br/>
+        {{ form.price.label }}
+        {{ form.price() }}
+    <br/>
+        {{ form.description.label }}
+        {{ form.description() }}
+    <br/>
+        {{ form.Submit() }}
+    <br/>
+    <p>Tips on how to use the stock database:</p>
+    <ul>
+    <li>You can search for any item by using any single field.</li> 
+    <li>Exact item name and any number of other fields will update that item.</li>
+    <li>Both item removal and item addition need a item name. Otherwise, it will just ignore your request and use that field to search.</li>
+    <li>When adding an item, please be aware that the item name will be shown in the shop. Please make it interesting and precise. Like 6 Tasty Doughnuts.</li>
+    </ul>
+</form>
+
+<p>{{ success }}</p>
+
+{% endblock %}

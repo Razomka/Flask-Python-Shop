@@ -1,0 +1,16 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+
+<section class="Gallery">
+{% for items in shop %}
+    <figure>
+        <img src = "{{url_for('static', filename=items['imagename'])}}" alt = "Alt text" title = "{{items['title']}}"/>
+        <figcaption>{{items["item"]}} Current Stock: {{items["stock"]}} Price: €{{items["price"]}}</figcaption>
+        <a href="{{url_for('add_to_basket',id=items['id'])}}">Add to basket</a>
+        <a href="{{url_for('add_to_wishlist',id=items['id'])}}">Add to your wish list</a>
+    </figure>
+{% endfor %}        
+<p>{{success}}</p>
+</section>
+{% endblock %}

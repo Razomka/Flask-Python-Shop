@@ -1,0 +1,12 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+<form action ="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.emailbox.label }}
+    {{ form.emailbox(size=60) }}
+    <br/>
+    {{ form.Submit() }}
+</form>
+<p>{{success}}</p>
+{% endblock %}

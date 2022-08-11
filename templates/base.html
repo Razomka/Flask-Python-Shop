@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <nav>
+    </nav>
+    <main>
+    {% block main_content %}
+    {% endblock %}
+    </main>
+    <footer>
+    {% if g.admin %}
+        <p>Username: {{g.admin}}</p>
+        <p><a href="{{url_for('logout')}}"> Sign out</a></p>
+    {% elif g.user %}
+        <p>Username: {{g.user}}</p>
+        <p><a href="{{url_for('logout')}}">Sign out</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login')}}">Sign in</a></p>
+        <p><a href="{{ url_for('register') }}">Register to our shop</a></p>
+    {% endif %}
+    </footer>
+</body>
+</html>

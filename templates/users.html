@@ -1,0 +1,129 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+
+<table>
+    <caption> Table of Users</caption>
+    <tr>
+        <th>
+            Username
+        </th>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Home Address
+        </th>
+        <th>
+            Account Type
+        </th>
+    </tr>
+    {% for person in users %}
+    <tr>
+        <td>
+            {{person["user_id"]}}
+        </td>
+        <td>
+            {{person["name"]}}
+        </td>
+        <td>
+            {{person["email"]}}
+        </td>
+        <td>
+            {{person["address"]}}
+        </td>
+        <td>
+            {{person["type"]}}
+        </td>
+        <td>
+            {{person["orders"]}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br/>
+
+{% if users %}
+    <table>
+        <th>
+            Item(s) that have been ordered by {{users[0][0]}}
+        </th>
+        <th>
+            No. of item ordered
+        </th>
+        {% for id in orders %}
+    <tr>
+        <td>
+            {{orders_itemname[id]}}
+        </td>
+        <td>
+            {{orders[id]}}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <table>
+        <th>
+            Item(s) in {{users[0][0]}}'s Wish list
+        </th>
+    {% for item in itemname %}
+    <tr>
+        <td>
+            {{item}}
+        </td>
+    </tr>
+    {% endfor %}
+{% endif %}
+
+
+</table>
+
+<form action ="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.modification.label }}
+        {{ form.modification() }}
+    <br/>
+        {{form.removal.label}}
+        {{form.removal()}}
+    <br/>
+        {{ form.username.label }}
+        {{ form.username() }}
+    <br/>
+        {{form.password.label}}
+        {{form.password()}}
+    <br/>
+        {{ form.changetype.label }}
+        {{ form.changetype() }}
+    <br/>
+        {{ form.changename.label }}
+        {{ form.changename() }}
+    <br/>
+        {{ form.changeaddress.label }}
+        {{ form.changeaddress() }}
+    <br/>
+        {{ form.changemail.label }}
+        {{ form.changemail() }}
+    <br/>
+        {{ form.Submit() }}
+</form>
+
+{% if users %}
+    {% if users[0][0] != 'admin' %}
+        <p><a href = "{{url_for('email_user',username = users[0][0])}}">Click to email the top result.</a></p>
+    {% endif %}
+{% endif %}
+
+<p>Tips on using the User database:</p>
+    <ul>
+        <li>When searching for a user, you can use any field to find their information.</li>
+        <li>When updating or adding a user, you will need to insert their username for it to properly function.</li>
+        <li>Otherwise, it will just return you the database.</li>
+        <li>Finally, if you find a result and want to email that user. You can click the link that is generated. However, if you have multiple users displayed. It will email the top user.</li>
+    </ul>
+<p>{{ success }}</p>
+
+{% endblock %}

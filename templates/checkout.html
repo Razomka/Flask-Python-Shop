@@ -1,0 +1,37 @@
+{% extends "base_mod.html" %}
+
+{% block main_content%}
+
+{% if empty %}
+    <p>This is the checkout area, your basket is empty therefore nothing to do here.</p>
+    <p>Please return back the <a href="{{url_for('index')}}">main page</a></p>
+{% elif error %}
+    <p>I'm sorry but we do not have enough {{stockname[1]}} to purchase. Someone must have got the last stock!</p>
+    <p>You can check the shop to see our current stock levels or add it to your wish list and we'll email you when back in stock.</p>
+{% else %}
+    <p>Welcome to the checkout!</p>
+
+<section class="Gallery">
+    {% for id in basket %}
+        <figure>
+            <img src = "{{url_for('static', filename=imagenames[id])}}" alt = "Alt text"/>
+            <figcaption>{{items[id]}} Price: {{prices[id]}} Number ordered: {{basket[id]}}</figcaption>
+                <figcaption> Total price for all items: {{minitotal[id]}}</figcaption>
+            <a href="{{url_for('remove_from_basket',id=id)}}">Remove one of this item from your basket</a>
+        </figure>
+    {% endfor %}
+</section>
+    <p>Total: €{{total}}</p>
+    <p>{{success}}</p>
+    <form action ="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.promotion.label }}
+        {{ form.promotion() }}
+    <br/>
+        {{ form.Submit() }}
+    </form> 
+    <p><a href="{{url_for('purchase',total=total)}}">Shall we buy the lot?</a></p>
+{% endif %}
+
+
+{% endblock %}
